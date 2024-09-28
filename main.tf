@@ -23,8 +23,10 @@ module "auth" {
 
 module "lambda" {
   source = "./lambda"
+  db_username = var.db_username
   db_password = var.db_password
   jwt_secret = var.jwt_secret
+  db_address = module.database.db_address
 }
 
 module "api_gateway" {
@@ -43,6 +45,7 @@ module "kubernetes" {
   source = "./kubernetes"
   app_image = var.app_image
   subnets = module.networking.db_subnet_group_ids
+  db_address = module.database.db_address
 }
 
 module "monitoring" {

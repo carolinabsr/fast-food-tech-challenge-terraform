@@ -5,3 +5,7 @@ variable "app_image" {
 variable "subnets" {
   type = list(string)
 }
+
+variable "db_address" {
+  type = string
+}
