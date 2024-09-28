@@ -29,7 +29,7 @@ resource "aws_security_group" "db_sg" {
   }
 }
 
-output "lambda_sg_id" {
+output "lambda_sg_ids" {
   value = aws_security_group.lambda_sg.id
 }
 
