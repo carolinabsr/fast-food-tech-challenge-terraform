@@ -28,34 +28,14 @@ jobs:
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v3.1.2
 
-    - name: Initialize Terraform Networking
+    - name: Initialize Terraform
       run: terraform init
-      working-directory: networking
 
-    - name: Validate Terraform Networking
+    - name: Validate Terraform
       run: terraform validate
-      working-directory: networking
 
-    - name: Plan Terraform Networking
-      run: terraform plan -var-file=../terraform.tfvars
-      working-directory: networking
+    - name: Plan Terraform
+      run: terraform plan
 
-    - name: Apply Terraform Networking
-      run: terraform apply -auto-approve -var-file=../terraform.tfvars
-      working-directory: networking
-
-    - name: Initialize Terraform Database
-      run: terraform init
-      working-directory: database
-
-    - name: Validate Terraform Database
-      run: terraform validate
-      working-directory: database
-
-    - name: Plan Terraform Database  
-      run: terraform plan -var-file=../terraform.tfvars
-      working-directory: database
-
-    - name: Apply Terraform Database 
-      run: terraform apply -auto-approve -var-file=../terraform.tfvars
-      working-directory: database
+    - name: Apply Terraform
+      run: terraform apply -auto-approve

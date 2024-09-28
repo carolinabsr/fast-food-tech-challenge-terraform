@@ -8,10 +8,10 @@ resource "aws_lambda_function" "auth_function" {
 
   environment {
     variables = {
-      DB_HOST     = aws_db_instance.default.address
-      DB_NAME     = aws_db_instance.default.db_name
-      DB_USER     = aws_db_instance.default.username
-      DB_PASSWORD = var.db_password
+      DB_HOST     = module.database.instance_address
+      DB_NAME     = module.database.db_name
+      DB_USER     = module.database.db_username
+      DB_PASSWORD = module.database.db_password
       JWT_SECRET  = var.jwt_secret
     }
   }
@@ -37,11 +37,6 @@ resource "aws_iam_role" "lambda_exec" {
       }
     }]
   })
-}
-
-resource "aws_iam_role_policy_attachment" "lambda_basic_execution" {
-  role       = aws_iam_role.lambda_exec.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
 }
 
 output "auth_function_arn" {

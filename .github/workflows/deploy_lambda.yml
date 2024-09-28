@@ -59,28 +59,14 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3.1.2
 
-      - name: Terraform Init for Lambda
+      - name: Initialize Terraform
         run: terraform init
 
-      - name: Download Artifact
-        uses: actions/download-artifact@v4.1.8
-        with:
-          name: lambda_package
-          path: lambda/lambda_auth.zip
+      - name: Validate Terraform
+        run: terraform validate
 
-      - name: Terraform Plan for Lambda
-        run: terraform plan -var-file=../terraform.tfvars
-        
-        working-directory: lambda
+      - name: Plan Terraform
+        run: terraform plan
 
-      - name: Terraform Apply for Lambda
-        run: terraform apply -auto-approve -var-file=../terraform.tfvars
-        working-directory: lambda
-
-      - name: Terraform Init for API Gateway
-        run: terraform init
-        working-directory: api_gateway
-
-      - name: Terraform Apply for API Gateway
-        run: terraform apply -auto-approve -var-file=../terraform.tfvars
-        working-directory: api_gateway
+      - name: Apply Terraform
+        run: terraform apply -auto-approve
