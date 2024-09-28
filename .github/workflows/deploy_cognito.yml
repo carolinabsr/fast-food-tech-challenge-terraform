@@ -1,0 +1,36 @@
+name: Deploy Cognito
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'auth/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4.2.0
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v3.1.2
+
+    - name: Initialize Terraform
+      run: terraform init
+      working-directory: auth
+
+    - name: Validate Terraform
+      run: terraform validate
+      working-directory: auth
+
+    - name: Plan Terraform
+      run: terraform plan
+      working-directory: auth
+
+    - name: Apply Terraform
+      run: terraform apply -auto-approve
+      working-directory: auth
