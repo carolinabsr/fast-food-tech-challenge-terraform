@@ -21,6 +21,12 @@ module "auth" {
   source = "./auth"
 }
 
+module "lambda" {
+  source = "./lambda"
+  db_password = var.db_password
+  jwt_secret = var.jwt_secret
+}
+
 module "api_gateway" {
   source = "./api_gateway"
 }
@@ -34,12 +40,6 @@ module "database" {
 module "kubernetes" {
   source = "./kubernetes"
   app_image = var.app_image
-}
-
-module "lambda" {
-  source = "./lambda"
-  db_password = var.db_password
-  jwt_secret = var.jwt_secret
 }
 
 module "monitoring" {
