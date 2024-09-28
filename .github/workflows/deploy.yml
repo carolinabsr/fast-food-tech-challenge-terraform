@@ -35,7 +35,7 @@ jobs:
           zip -r ../lambda_auth.zip .
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: lambda_package
           path: lambda_auth.zip
@@ -54,7 +54,7 @@ jobs:
         working-directory: lambda
 
       - name: Download Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.8
         with:
           name: lambda_package
           path: lambda/lambda_auth.zip
