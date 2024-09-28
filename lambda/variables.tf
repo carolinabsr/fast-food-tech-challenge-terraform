@@ -25,10 +25,10 @@ variable "db_address" {
   type        = string
 }
 
-variable "db_sg_ids" {
+variable "db_sg_id" {
   type        = string
 } 
 
-variable "lambda_sg_ids" {
+variable "lambda_sg_id" {
   type        = string
 }
