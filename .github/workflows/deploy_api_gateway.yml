@@ -1,11 +1,11 @@
-name: Deploy Cognito
+name: Deploy API Gateway
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'auth/**'
+      - 'api_gateway/**'
   workflow_dispatch:
 
 concurrency:
@@ -30,16 +30,16 @@ jobs:
 
     - name: Initialize Terraform
       run: terraform init
-      working-directory: auth
+      working-directory: api_gateway
 
     - name: Validate Terraform
       run: terraform validate
-      working-directory: auth
+      working-directory: api_gateway
 
     - name: Plan Terraform
       run: terraform plan
-      working-directory: auth
+      working-directory: api_gateway
 
     - name: Apply Terraform
       run: terraform apply -auto-approve 
-      working-directory: auth
+      working-directory: api_gateway
