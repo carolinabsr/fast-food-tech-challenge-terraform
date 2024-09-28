@@ -23,6 +23,8 @@ module "auth" {
 
 module "database" {
   source = "./database"
+  db_username = var.db_username
+  db_password = var.db_password
 }
 
 module "kubernetes" {
