@@ -29,7 +29,7 @@ module "lambda" {
   jwt_secret = var.jwt_secret
   db_address = module.database.db_address
   db_sg_ids = module.networking.db_sg_ids
-  lambda_sg_id = module.networking.lambda_sg_id
+  lambda_sg_ids = module.networking.lambda_sg_ids
 }
 
 module "api_gateway" {
