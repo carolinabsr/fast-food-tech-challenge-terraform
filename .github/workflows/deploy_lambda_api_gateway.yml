@@ -66,7 +66,7 @@ jobs:
       - run: ls -a lambda
 
       - name: Terraform Plan for Lambda
-        run: terraform plan
+        run: terraform plan -var-file=../terraform.tfvars
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -74,7 +74,7 @@ jobs:
         working-directory: lambda
 
       - name: Terraform Apply for Lambda
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var-file=../terraform.tfvars
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -86,7 +86,7 @@ jobs:
         working-directory: api_gateway
 
       - name: Terraform Apply for API Gateway
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var-file=../terraform.tfvars
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
