@@ -55,7 +55,3 @@ output "auth_function_invoke_arn" {
 output "auth_function_name" {
   value = aws_lambda_function.auth_function.function_name
 }
-
-output "auth_function_name" {
-  value = aws_lambda_function.auth_function.function_name
-}
