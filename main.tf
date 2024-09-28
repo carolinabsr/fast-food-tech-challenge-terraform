@@ -29,10 +29,13 @@ module "database" {
 
 module "kubernetes" {
   source = "./kubernetes"
+  app_image = var.app_image
 }
 
 module "lambda" {
   source = "./lambda"
+  db_password = var.db_password
+  jwt_secret = var.jwt_secret
 }
 
 module "monitoring" {
@@ -45,6 +48,9 @@ module "networking" {
 
 module "secrets" {
   source = "./secrets"
+  db_username = var.db_username
+  db_password = var.db_password
+
 }
 
 output "api_gateway_rest_api_id" {

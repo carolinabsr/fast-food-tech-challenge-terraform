@@ -12,3 +12,8 @@
    description = "The image for the app"
    type        = string
  }
+
+  variable "jwt_secret" {
+    description = "The secret for the JWT"
+    type        = string
+  }
