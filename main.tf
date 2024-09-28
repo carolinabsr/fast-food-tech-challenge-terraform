@@ -53,6 +53,7 @@ module "kubernetes" {
 
 module "monitoring" {
   source = "./monitoring"
+  auth_function_name = module.lambda.auth_function_name
 }
 
 module "secrets" {
