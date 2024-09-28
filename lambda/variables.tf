@@ -25,10 +25,10 @@ variable "db_address" {
   type        = string
 }
 
-variable "db_sg_id" {
+variable "db_sg_ids" {
   type        = list(string)
 } 
 
-variable "lambda_sg_id" {
+variable "lambda_sg_ids" {
   type        = list(string)
 }
