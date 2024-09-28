@@ -30,22 +30,6 @@ jobs:
 
     - name: Initialize Terraform
       run: terraform init
-      working-directory: auth
-
-    - name: Validate Terraform
-      run: terraform validate
-      working-directory: auth
-
-    - name: Plan Terraform
-      run: terraform plan
-      working-directory: auth
-
-    - name: Apply Terraform
-      run: terraform apply -auto-approve 
-      working-directory: auth
-
-    - name: Initialize Terraform
-      run: terraform init
       working-directory: api_gateway
 
     - name: Validate Terraform
