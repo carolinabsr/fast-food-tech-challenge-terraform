@@ -8,7 +8,7 @@ resource "aws_db_instance" "default" {
   password               = var.db_password
   parameter_group_name   = "default.postgres13"
   skip_final_snapshot    = true
-  vpc_security_group_ids = [var.db_sg_ids]
+  vpc_security_group_ids = var.db_sg_ids
 }   
 
 output "db_address" {

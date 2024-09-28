@@ -1,3 +1,8 @@
+variable "db_name" {
+  description = "Database name"
+  type        = string
+}
+
 variable "db_username" {
   description = "Database username"
   type        = string
@@ -17,5 +22,13 @@ variable "jwt_secret" {
 
 variable "db_address" {
   description = "Database address"
+  type        = string
+}
+
+variable "db_sg_ids" {
+  type        = list(string)
+} 
+
+variable "lambda_sg_id" {
   type        = string
 }

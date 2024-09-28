@@ -7,5 +7,5 @@ variable "db_password" {
 }
 
 variable "db_sg_ids" {
-  type = string
+  type = list(string)
 }

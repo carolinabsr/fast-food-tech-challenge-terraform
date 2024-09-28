@@ -8,6 +8,11 @@
    type        = string
  }
 
+ variable "db_name" {
+   description = "The name of the database"
+   type        = string
+ }
+
  variable "app_image" {
    description = "The image for the app"
    type        = string

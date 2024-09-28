@@ -8,17 +8,17 @@ resource "aws_lambda_function" "auth_function" {
 
   environment {
     variables = {
-      DB_HOST     = module.database.instance_address
-      DB_NAME     = module.database.db_name
-      DB_USER     = module.database.db_username
-      DB_PASSWORD = module.database.db_password
+      DB_HOST     = var.db_address
+      DB_NAME     = var.db_name
+      DB_USER     = var.db_username
+      DB_PASSWORD = var.db_password
       JWT_SECRET  = var.jwt_secret
     }
   }
 
   vpc_config {
-    subnet_ids         = aws_db_subnet_group.main.subnet_ids
-    security_group_ids = aws_security_group.lambda_sg.id
+    subnet_ids         = var.db_sg_ids
+    security_group_ids = var.lambda_sg_id
   }
 
   depends_on = [aws_iam_role_policy_attachment.lambda_basic_execution]
