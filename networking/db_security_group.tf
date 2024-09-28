@@ -29,10 +29,10 @@ resource "aws_security_group" "db_sg" {
   }
 }
 
-output "lambda_sg_id" {
-  value = aws_security_group.lambda_sg.id
+output "lambda_sg_ids" {
+  value = [aws_security_group.lambda_sg.id]
 }
 
-output "db_sg_id" {
-  value = aws_security_group.db_sg.id
+output "db_sg_ids" {
+  value = [aws_security_group.db_sg.id]
 }

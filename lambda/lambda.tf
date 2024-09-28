@@ -17,8 +17,8 @@ resource "aws_lambda_function" "auth_function" {
   }
 
   vpc_config {
-    subnet_ids         = var.db_sg_id
-    security_group_ids = var.lambda_sg_id
+    subnet_ids         = var.db_sg_ids
+    security_group_ids = var.lambda_sg_ids
   }
 
   depends_on = [aws_iam_role_policy_attachment.lambda_basic_execution]
