@@ -57,9 +57,9 @@ output "api_gateway_rest_api_id" {
   value = module.api_gateway.rest_api_id
 }
 
-output "auth_user_pool_id" {
-  value = module.auth.user_pool_id
-}
+# output "auth_user_pool_id" {
+#   value = module.auth.user_pool_id
+# }
 
 output "database_instance_address" {
   value = module.database.instance_address
@@ -77,10 +77,10 @@ output "monitoring_log_group_name" {
   value = module.monitoring.log_group_name
 }
 
-output "networking_vpc_id" {
-  value = module.networking.vpc_id
-}
+# output "networking_vpc_id" {
+#   value = module.networking.vpc_id
+# }
 
-output "secrets_db_credentials_arn" {
-  value = module.secrets.db_credentials_arn
-}
+# output "secrets_db_credentials_arn" {
+#   value = module.secrets.db_credentials_arn
+# }
