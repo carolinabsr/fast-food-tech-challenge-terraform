@@ -42,6 +42,7 @@ module "database" {
 module "kubernetes" {
   source = "./kubernetes"
   app_image = var.app_image
+  subnets = module.networking.db_subnet_group_ids
 }
 
 module "monitoring" {
