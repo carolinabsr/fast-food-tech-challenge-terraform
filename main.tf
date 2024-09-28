@@ -13,12 +13,16 @@ provider "aws" {
   region = "us-east-1"
 }
 
-module "api_gateway" {
-  source = "./api_gateway"
+module "networking" {
+  source = "./networking"
 }
 
 module "auth" {
   source = "./auth"
+}
+
+module "api_gateway" {
+  source = "./api_gateway"
 }
 
 module "database" {
@@ -40,10 +44,6 @@ module "lambda" {
 
 module "monitoring" {
   source = "./monitoring"
-}
-
-module "networking" {
-  source = "./networking"
 }
 
 module "secrets" {
