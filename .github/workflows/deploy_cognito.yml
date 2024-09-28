@@ -25,7 +25,6 @@ jobs:
 
     - name: Initialize Terraform
       run: terraform init
-      working-directory: auth
 
     - name: Validate Terraform
       run: terraform validate
