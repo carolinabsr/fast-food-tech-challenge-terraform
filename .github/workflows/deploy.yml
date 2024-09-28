@@ -55,6 +55,8 @@ jobs:
           name: lambda_package
           path: lambda/lambda_auth.zip
 
+      - run: ls -a lambda
+
       - name: Terraform Plan for Lambda
         run: terraform plan
         env:
