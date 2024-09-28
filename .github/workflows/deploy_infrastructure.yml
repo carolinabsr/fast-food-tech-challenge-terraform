@@ -1,11 +1,11 @@
-name: Deploy Cognito
+name: Deploy Infrastructure
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'auth/**'
+      - 'api_gateway/**'
   workflow_dispatch:
 
 concurrency:
