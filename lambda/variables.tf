@@ -26,9 +26,9 @@ variable "db_address" {
 }
 
 variable "db_sg_ids" {
-  type        = list(string)
+  type        = string
 } 
 
 variable "lambda_sg_ids" {
-  type        = list(string)
+  type        = string
 }
