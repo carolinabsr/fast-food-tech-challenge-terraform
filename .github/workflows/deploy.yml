@@ -53,7 +53,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: lambda_package
-          path: lambda_auth.zip
+          path: lambda/lambda_auth.zip
 
       - name: Terraform Plan for Lambda
         run: terraform plan
