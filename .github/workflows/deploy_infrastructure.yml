@@ -1,4 +1,4 @@
-name: Deploy API Gateway
+name: Deploy Infrastructure
 
 on:
   push:
@@ -30,16 +30,12 @@ jobs:
 
     - name: Initialize Terraform
       run: terraform init
-      working-directory: api_gateway
 
     - name: Validate Terraform
       run: terraform validate
-      working-directory: api_gateway
 
     - name: Plan Terraform
       run: terraform plan
-      working-directory: api_gateway
 
     - name: Apply Terraform
-      run: terraform apply -auto-approve 
-      working-directory: api_gateway
+      run: terraform apply -auto-approve
