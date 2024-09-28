@@ -55,6 +55,13 @@ jobs:
           name: lambda_package
           path: lambda_auth.zip
 
+      - name: Terraform Plan for Lambda
+        run: terraform plan
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        working-directory: lambda
+
       - name: Terraform Apply for Lambda
         run: terraform apply -auto-approve
         env:
