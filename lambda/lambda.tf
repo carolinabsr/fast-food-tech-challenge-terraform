@@ -43,3 +43,15 @@ resource "aws_iam_role_policy_attachment" "lambda_basic_execution" {
   role       = aws_iam_role.lambda_exec.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
 }
+
+output "auth_function_arn" {
+  value = aws_lambda_function.auth_function.arn
+}
+
+output "auth_function_invoke_arn" {
+  value = aws_lambda_function.auth_function.invoke_arn
+}
+
+output "auth_function_name" {
+  value = aws_lambda_function.auth_function.function_name
+}
