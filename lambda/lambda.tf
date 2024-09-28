@@ -3,7 +3,7 @@ resource "aws_lambda_function" "auth_function" {
   handler       = "index.handler"
   runtime       = "nodejs18.x"
   role          = aws_iam_role.lambda_exec.arn
-  filename      = "lambda_auth_postgres.zip"
+  filename      = "lambda_auth.zip"
   publish       = true
 
   environment {

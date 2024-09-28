@@ -1,4 +1,4 @@
-name: Deploy Infrastructure
+name: Deploy Lambda and API Gateway
 
 on:
   push:
@@ -6,10 +6,40 @@ on:
       - main
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Lambda Repository
+        uses: actions/checkout@v3
+        with:
+          repository: viniciussantos45/fast-food-tech-challenge-lambda
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+  
+      - name: Install Dependencies
+        run: |
+          cd lambda_auth
+          npm install
+
+      - name: Zip Lambda Function
+        run: |
+          cd lambda_auth
+          zip -r ../lambda_auth.zip .
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: lambda_package
+          path: lambda_auth.zip
+
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3.1.2
@@ -17,6 +47,12 @@ jobs:
       - name: Terraform Init for Lambda
         run: terraform init
         working-directory: lambda
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: lambda_package
+          path: lambda_auth.zip
 
       - name: Terraform Apply for Lambda
         run: terraform apply -auto-approve
