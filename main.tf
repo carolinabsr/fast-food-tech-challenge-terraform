@@ -35,7 +35,8 @@ module "api_gateway" {
 module "database" {
   source = "./database"
   db_username = var.db_username
-  db_password = var.db_password
+  db_password = var.db_password 
+  db_sg_ids = module.networking.db_sg_ids
 }
 
 module "kubernetes" {
