@@ -1,4 +1,4 @@
-name: Deploy Lambda Function
+name: Deploy Infrastructure
 
 on:
   push:
@@ -8,32 +8,30 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: api_gateway
     steps:
       - uses: actions/checkout@v2
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
 
-      - name: Terraform Init
+      - name: Terraform Init for Lambda
         run: terraform init
+        working-directory: lambda
 
-      # - name: Terraform Apply
-      #   run: terraform apply -auto-approve
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      # -----------------OR------------------
-      - name: Terraform Plan
-        run: terraform plan -out=tfplan -input=false
+      - name: Terraform Apply for Lambda
+        run: terraform apply -auto-approve
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        working-directory: lambda
 
-      # - name: Terraform Apply
-      #   run: terraform apply -input=false tfplan
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Terraform Init for API Gateway
+        run: terraform init
+        working-directory: api_gateway
+
+      - name: Terraform Apply for API Gateway
+        run: terraform apply -auto-approve
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        working-directory: api_gateway
