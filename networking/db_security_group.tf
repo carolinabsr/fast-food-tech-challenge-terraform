@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
 # Security Group para a função Lambda
 resource "aws_security_group" "lambda_sg" {
   name        = "lambda_sg"
