@@ -55,7 +55,6 @@ jobs:
 
       - name: Terraform Init for Lambda
         run: terraform init
-        working-directory: lambda
 
       - name: Download Artifact
         uses: actions/download-artifact@v4.1.8
